@@ -51,6 +51,7 @@ function addToCart(name, price){
         //se o item existe, aumenta a quantidade + 1
         existingItem.quantity += 1;
         
+        
     }else{
         cart.push({
             name,
@@ -59,12 +60,14 @@ function addToCart(name, price){
         })
     }
 
-    updateCartModal()    
+    updateCartModal();    
+    // Atualiza o contador do carrinho
+    cartCounter.innerText = cart.reduce((total, item) => total + item.quantity, 0); 
 }
 
+
+
 //atualiza carrinho
-
-
 function updateCartModal(){
     cartItemsContainer.innerHTML = "";
     let total = 0;
@@ -100,7 +103,7 @@ function updateCartModal(){
 
      });
 
-     cartCounter.innerText = cart.length;
+      cartCounter.innerHTML = cart.length;
 }
 
 // função para remover item do carrinho
